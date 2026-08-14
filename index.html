@@ -6,8 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Tea Nook Gallery Tracker</title>
 
-<script src="https://cdn.jsdelivr.net/npm/abase-js@2script>
-    
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
     --bg:#fff9fc;
@@ -255,20 +254,13 @@ footer { max-width: 1250px; margin: 34px auto 0; text-align: center; color: var(
 <p class="empty" id="emptyMessage">No members found matching your search.</p>
 <footer>Made for The Tea Nook guild 🌸✨</footer>
 <script>
-const SUPABASE_url = 
-"https://xnpigqbdkutyipgdijru.supabase.co";  
+const SUPABASE_URL = "https://xnpigqbdkutyipgdijru.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhucGlncWJka3V0eWlwZ2RpanJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3MDA1NTMsImV4cCI6MjEwMjI3NjU1M30.HZz-uT9Nyg4IvoC9PPjnX3hRLVdxcBaIkhnVWDwrJ3s";
 
-const SUPABASE_KEY =
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhucGlncWJka3V0eWlwZ2RpanJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3MDA1NTMsImV4cCI6MjEwMjI3NjU1M30.HZz-uT9Nyg4IvoC9PPjnX3hRLVdxcBaIkhnVWDwrJ3s";
-
-async function testConnection() {
-    const { data, error } = await supabase
-        .from('members')
-        .select('*');
-
-    console.log('DATA:', data);
-    console.log('ERROR:', error);
-}
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 async function testConnection() {
     const { data, error } = await supabaseClient
@@ -280,7 +272,6 @@ async function testConnection() {
 }
 
 testConnection();
-
 const members = [];
 const attributeBonuses = [];
 
